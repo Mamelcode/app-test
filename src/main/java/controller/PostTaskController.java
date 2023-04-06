@@ -27,19 +27,18 @@ public class PostTaskController extends HttpServlet {
 		HttpSession session = req.getSession();
 		User one = (User)session.getAttribute("logonUser");
 		
-		
 		String id = UUID.randomUUID().toString().split("-")[0];
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		
 		String userId;
-		
 		
 		if(req.getParameter("userId") != null) {
 			userId = req.getParameter("userId");
 		}else {
 			userId = one.getId();
 		}
+		
+		
 		Map<String, Object> map = new HashMap<>();
 		map.put("id", id);
 		map.put("title", title);
@@ -55,14 +54,9 @@ public class PostTaskController extends HttpServlet {
 				req.getServletContext().getAttribute("sqlSessionFactory");
 		SqlSession sqlSession = factory.openSession();
 		int result = sqlSession.insert("post.create", map);
+		sqlSession.commit();
 		sqlSession.close();
 		//=========================================================
-		
-		if(result == 1) {
-			System.out.println("성공");
-		}else {
-			System.out.println("실패");
-		}
 		
 		resp.sendRedirect("/post/post-list");
 		return;

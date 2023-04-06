@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="post">
+	<!-- 게시글 보기 -->
 	<select id="findByPost" resultType="data.Post" parameterType="hashmap">
 		SELECT * FROM
 		(SELECT ROWNUM RN, t.* FROM
@@ -10,6 +11,7 @@
 		) WHERE RN BETWEEN #{a} AND #{b}
 	</select>
 	
+	<!-- 게시글 등록 -->
 	<insert id="create" parameterType="hashmap">
 		INSERT INTO
 		POSTS(ID, TITLE, CONTENT, USER_ID
