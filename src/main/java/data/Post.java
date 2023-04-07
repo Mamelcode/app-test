@@ -1,16 +1,25 @@
 package data;
 
-import oracle.sql.DATE;
-
 public class Post {
 	String id;
 	String title;
 	String content;
 	String userId;
-	String UserPass;
+	String userPass;
 	
 	int views;
-	DATE date;
+	String dates;
+	
+	String likeCnt;
+	
+	
+	
+	public String getLikeCnt() {
+		return likeCnt;
+	}
+	public void setLikeCnt(String likeCnt) {
+		this.likeCnt = likeCnt;
+	}
 	public String getId() {
 		return id;
 	}
@@ -36,10 +45,10 @@ public class Post {
 		this.userId = userId;
 	}
 	public String getUserPass() {
-		return UserPass;
+		return userPass;
 	}
 	public void setUserPass(String userPass) {
-		UserPass = userPass;
+		this.userPass = userPass;
 	}
 	public int getViews() {
 		return views;
@@ -47,10 +56,10 @@ public class Post {
 	public void setViews(int views) {
 		this.views = views;
 	}
-	public DATE getDate() {
-		return date;
+	public String getDates() {
+		return dates;
 	}
-	public void setDate(DATE date) {
-		this.date = date;
+	public void setDates(String dates) {
+		this.dates = dates;
 	}
 }

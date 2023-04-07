@@ -6,23 +6,26 @@
 <head>
 <meta charset="UTF-8">
 <title>D.C</title>
+<link rel="stylesheet" href="/resource/css/initial.css" />
 <link rel="stylesheet" href="/resource/css/style.css" />
+<link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 </head>
 <body>
-	<div>
+	<div class="home_wrap">
 		<div>
 			<c:choose>
 				<c:when test="${sessionScope.logon }">
 					<h2>${logonUser.id} 님 환영합니다!</h2>
 				</c:when>
 				<c:otherwise>
-					<a href="/user/login">로그인</a>
+					<a href="/user/login" class="login_btn"><i class="fa-solid fa-user-astronaut"></i>로그인</a>
 				</c:otherwise>
 			</c:choose>
 		</div>
 		
 		<div>
-			<a href="/post/post-list">글목록</a>
+			<a href="/post/post-list" class="text_btn">글목록</a>
 		</div>
 	</div>
 </body>

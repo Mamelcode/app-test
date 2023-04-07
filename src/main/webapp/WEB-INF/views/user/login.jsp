@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/resource/css/style.css" />
 </head>
 <body>
-	<div class="root login_area">
+	<div class="home_wrap">
 		<form action="/user/login-task" method="post" class="join-form">
 			<h2>#로그인</h2>
 			<div class="user_input">
@@ -26,7 +26,7 @@
 				<p class="error_text" style="color: red">로그인에 실패하였습니다.</p>
 			</c:if>
 			<div>
-				<button type="submit" class="join-btn">다음</button>
+				<button type="submit" class="text_btn">다음</button>
 			</div>
 		</form>
 	</div>

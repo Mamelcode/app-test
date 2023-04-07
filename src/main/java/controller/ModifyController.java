@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// 글쓰기화면으로 보내는곳
-
-@WebServlet("/post/posting-view")
-public class PostingViewController extends HttpServlet {
+@WebServlet("/post/modify")
+public class ModifyController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
 		
-		req.getRequestDispatcher("/WEB-INF/views/post/postingview.jsp").forward(req, resp);
+		String id = req.getParameter("id");
+		req.getRequestDispatcher("/WEB-INF/views/post/modify.jsp?id="+id).forward(req, resp);
 	}
 }

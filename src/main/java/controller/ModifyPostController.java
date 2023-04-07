@@ -17,16 +17,14 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import data.User;
 
-// 포스트 등록 처리하는곳
-
-@WebServlet("/post/post-task")
-public class PostTaskController extends HttpServlet {
+@WebServlet("/post/update")
+public class ModifyPostController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
 		
-		String id = UUID.randomUUID().toString().split("-")[0];
+		String id = req.getParameter("id");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String userId;
@@ -52,12 +50,12 @@ public class PostTaskController extends HttpServlet {
 		SqlSessionFactory factory = (SqlSessionFactory)
 				req.getServletContext().getAttribute("sqlSessionFactory");
 		SqlSession sqlSession = factory.openSession();
-		int result = sqlSession.insert("post.create", map);
+		int result = sqlSession.update("post.updatePost", map);
 		sqlSession.commit();
 		sqlSession.close();
 		//=========================================================
 		
-		resp.sendRedirect("/post/post-list");
+		resp.sendRedirect("/post/detail?id="+ id);
 		return;
 	}
 }
