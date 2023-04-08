@@ -89,13 +89,14 @@
 			</table>
 		</div>
 	</div>
+	<c:set var="sortStatus" value="${empty param.sort ? null : param.sort }" />
 	<c:set var="currentPage" value="${empty param.page ? 1: param.page }"/>
 	<div class="page">
 		<%-- prve 처리 --%>
 		<div class="page_prev">
 			<c:choose> 
 				<c:when test="${existPrev }">
-					<a href="/post/post-list?page=${start - 1}">
+					<a href="/post/post-list?page=${start - 1}&sort=${sortStatus}">
 					<i style="color: black" class="fa-solid fa-angle-left"></i></a>
 				</c:when>
 				<c:otherwise>
@@ -111,7 +112,7 @@
 						<a style="color: red;">${idx }</a>
 					</c:when>
 					<c:otherwise>
-						<a href="/post/post-list?page=${idx}">${idx }</a>
+						<a href="/post/post-list?page=${idx}&sort=${sortStatus}">${idx }</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -121,7 +122,7 @@
 		<div class="page_next">
 			<c:choose>
 				<c:when test="${existNext }">
-					<a href="/post/post-list?page=${last + 1}">
+					<a href="/post/post-list?page=${last + 1}&sort=${sortStatus}">
 					<i style="color: black" class="fa-solid fa-angle-right"></i></a>
 				</c:when>
 				<c:otherwise>

@@ -46,17 +46,21 @@
 	<select id="findByPostAtoBviews" resultType="data.Post" parameterType="hashmap">
 		SELECT * FROM
 		(SELECT ROWNUM RN, t.*, NVL(i.like_cnt, 0) AS LIKECNT FROM
-			(SELECT * FROM POSTS) t
+			(SELECT * FROM POSTS ORDER BY VIEWS DESC) t
              FULL JOIN LIKE_CNT I ON t.id = i.id
-		) WHERE RN BETWEEN #{a} AND #{b} ORDER BY VIEWS DESC
+		) WHERE RN BETWEEN #{a} AND #{b}
 	</select>
 	
 	<select id="findByPostAtoBlikecnt" resultType="data.Post" parameterType="hashmap">
-	 SELECT * FROM
-		(SELECT ROWNUM RN, t.*, NVL(i.like_cnt, 0) AS LIKECNT FROM
-			(SELECT * FROM POSTS) t
-             FULL JOIN LIKE_CNT I ON t.id = i.id
-		) WHERE RN BETWEEN #{a} AND #{b} ORDER BY LIKECNT DESC
+		SELECT * FROM(
+	    SELECT ROWNUM RN, t.*, NVL(i.like_cnt, 0) AS LIKECNT 
+	    FROM
+	    (
+	        SELECT * FROM POSTS
+	    ) t
+	    FULL JOIN LIKE_CNT I ON t.id = i.id 
+	    ORDER BY LIKECNT DESC
+		) WHERE RN BETWEEN #{a} AND #{b}
 	</select>
 	
 	<!-- 특정 게시글 가져오기 -->
