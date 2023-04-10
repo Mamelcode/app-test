@@ -62,7 +62,13 @@
 							</c:when>
 							<c:otherwise>
 								<div class="bov_btn_like">
-									<a href="/post/like?id=${findPost.id}">추천</a>
+									<c:choose>
+										<c:when test="${findPost.userId eq logonUser.id}">
+										</c:when>
+										<c:otherwise>
+											<a href="/post/like?id=${findPost.id}">추천</a>
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</c:otherwise>
 						</c:choose>
