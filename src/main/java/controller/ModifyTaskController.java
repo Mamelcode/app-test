@@ -31,13 +31,17 @@ public class ModifyTaskController extends HttpServlet {
 		//=========================================================
 		Post one = sqlSession.selectOne("post.findByPost", id);
 		User user = (User)session.getAttribute("logonUser");
+		boolean logonUser = (boolean)session.getAttribute("logon");
 		
 		if(one.getUserPass() == null || userPass == null) {
-			if(one.getUserId().equals(user.getId())) {
-				sqlSession.close();
-				
-				resp.sendRedirect("/post/posting-view?id="+id+"&modify=1");
-				return;
+			if(logonUser == true) {
+				if(one.getUserId().equals(user.getId())) {
+					sqlSession.close();
+					
+					
+					resp.sendRedirect("/post/posting-view?id="+id+"&modify=1");
+					return;
+				}
 			}
 		}else if(one.getUserPass() != null || userPass != null) {
 			 if(one.getUserPass().equals(userPass)) {
