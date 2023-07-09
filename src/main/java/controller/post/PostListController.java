@@ -1,4 +1,4 @@
-package controller;
+package controller.post;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -40,8 +40,8 @@ public class PostListController extends HttpServlet {
 			}
 			
 			Map<String, Object> map = new HashMap<>();
-			map.put("a", (p-1)*10+1);
-			map.put("b", 10*p);
+			map.put("a", (p-1)*10);
+			map.put("b", 10);
 			List<Post> list;
 			if(sort != null) {
 				map.put("sort", sort);

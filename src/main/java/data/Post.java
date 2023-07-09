@@ -1,5 +1,7 @@
 package data;
 
+import java.time.LocalDateTime;
+
 public class Post {
 	String id;
 	String title;
@@ -8,11 +10,9 @@ public class Post {
 	String userPass;
 	
 	int views;
-	String dates;
+	LocalDateTime dates;
 	
 	String likeCnt;
-	
-	
 	
 	public String getLikeCnt() {
 		return likeCnt;
@@ -56,10 +56,10 @@ public class Post {
 	public void setViews(int views) {
 		this.views = views;
 	}
-	public String getDates() {
+	public LocalDateTime getDates() {
 		return dates;
 	}
-	public void setDates(String dates) {
+	public void setDates(LocalDateTime dates) {
 		this.dates = dates;
 	}
 }

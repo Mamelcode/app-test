@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="/resource/css/style.css" />
 <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>
 	<div class="home_wrap board_list">
@@ -97,13 +98,14 @@
 			<c:choose> 
 				<c:when test="${existPrev }">
 					<a href="/post/post-list?page=${start - 1}&sort=${sortStatus}">
-					<i style="color: black" class="fa-solid fa-angle-left"></i></a>
+					<i class="ri-arrow-left-s-line"></i></a>
 				</c:when>
 				<c:otherwise>
-					<a><i style="color: white" class="fa-solid fa-angle-left"></i></a>
+					<a><i class="ri-arrow-left-s-line"></i></a>
 				</c:otherwise>
 			</c:choose>
 		</div>
+		
 		<%-- 페이지 처리 --%>
 		<div>
 			<c:forEach begin="${start }" end="${last}" var="idx">
@@ -123,10 +125,10 @@
 			<c:choose>
 				<c:when test="${existNext }">
 					<a href="/post/post-list?page=${last + 1}&sort=${sortStatus}">
-					<i style="color: black" class="fa-solid fa-angle-right"></i></a>
+					<i class="ri-arrow-right-s-line"></i></a>
 				</c:when>
 				<c:otherwise>
-					<a><i style="color: white" class="fa-solid fa-angle-right"></i></a>
+					<a><i class="ri-arrow-right-s-line"></i></a>
 				</c:otherwise>
 			</c:choose>
 		</div>

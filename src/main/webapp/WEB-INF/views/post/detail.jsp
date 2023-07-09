@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="/resource/css/style.css" />
 <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>
 	<div class="home_wrap board_list">
@@ -36,11 +37,11 @@
 			</div>
 			<div  class="bov_info">
 				<div>
-					<h4><i class="fa-regular fa-user"></i>${findPost.userId }</h4>
+					<h4><i class="ri-user-line"></i>${findPost.userId }</h4>
 				</div>
 				<div>
-					<h4><i class="fa-regular fa-calendar"></i> ${findPost.dates } | <i class="fa-regular fa-eye"></i> ${findPost.views } | 
-					<i class="fa-regular fa-thumbs-up"></i> ${likeCnt}</h4>
+					<h4><i class="ri-calendar-line"></i> ${findPost.dates } | <i class="ri-eye-line"></i> ${findPost.views } | 
+					<i class="ri-thumb-up-line"></i> ${likeCnt}</h4>
 				</div>
 			</div>
 			<div class="bov_content">

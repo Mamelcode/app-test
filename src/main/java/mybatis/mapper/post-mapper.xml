@@ -5,10 +5,7 @@
 <mapper namespace="post">
 	<!-- 게시글 N개 보기 -->
 	<select id="findByPostAtoB" resultType="data.Post" parameterType="hashmap">
-		SELECT * FROM
-		(SELECT ROWNUM RN, t.* FROM
-			(SELECT * FROM POSTS ORDER BY DATES DESC) t
-		) WHERE RN BETWEEN #{a} AND #{b}
+		SELECT * FROM POSTS ORDER BY DATES ASC LIMIT #{a}, #{b}
 	</select>
 	
 	<!-- 게시글 정렬보기 -->
@@ -27,6 +24,8 @@
 		) WHERE RN BETWEEN #{a} AND #{b}
 	</select>
 	 -->
+	 
+	 <!--
 	<select id="findByPostAtoBSort" resultType="data.Post" parameterType="hashmap">
 		SELECT * FROM
 		(SELECT ROWNUM RN, t.*, NVL(i.like_cnt, 0) AS LIKECNT FROM
@@ -34,33 +33,24 @@
              FULL JOIN LIKE_CNT I ON t.id = i.id
 		) WHERE RN BETWEEN #{a} AND #{b}
 	</select>
+	-->
+	
+	<select id="findByPostAtoBSort" resultType="data.Post" parameterType="hashmap">
+		SELECT * FROM POSTS ORDER BY DATES ASC LIMIT #{a}, #{b}
+	</select>
 	
 	<select id="findByPostAtoBdates" resultType="data.Post" parameterType="hashmap">
-		SELECT * FROM
-		(SELECT ROWNUM RN, t.*, NVL(i.like_cnt, 0) AS LIKECNT FROM
-			(SELECT * FROM POSTS ORDER BY DATES ASC) t
-             FULL JOIN LIKE_CNT I ON t.id = i.id
-		) WHERE RN BETWEEN #{a} AND #{b}
+		SELECT * FROM POSTS ORDER BY DATES ASC LIMIT #{a}, #{b}
 	</select>
 	
 	<select id="findByPostAtoBviews" resultType="data.Post" parameterType="hashmap">
-		SELECT * FROM
-		(SELECT ROWNUM RN, t.*, NVL(i.like_cnt, 0) AS LIKECNT FROM
-			(SELECT * FROM POSTS ORDER BY VIEWS DESC) t
-             FULL JOIN LIKE_CNT I ON t.id = i.id
-		) WHERE RN BETWEEN #{a} AND #{b}
+		SELECT * FROM POSTS ORDER BY VIEWS DESC LIMIT #{a}, #{b}
 	</select>
 	
 	<select id="findByPostAtoBlikecnt" resultType="data.Post" parameterType="hashmap">
-		SELECT * FROM(
-	    SELECT ROWNUM RN, t.*, NVL(i.like_cnt, 0) AS LIKECNT 
-	    FROM
-	    (
-	        SELECT * FROM POSTS
-	    ) t
-	    FULL JOIN LIKE_CNT I ON t.id = i.id 
-	    ORDER BY LIKECNT DESC
-		) WHERE RN BETWEEN #{a} AND #{b}
+		SELECT P.*, IFNULL(LIKE_CNT, 0) AS LIKE_CNT FROM POSTS P LEFT JOIN LIKE_CNT L ON P.ID = L.ID 
+		UNION SELECT P.*, LIKE_CNT FROM POSTS P RIGHT JOIN LIKE_CNT L ON P.ID = L.ID 
+		ORDER BY LIKE_CNT DESC LIMIT #{a}, #{b}
 	</select>
 	
 	<!-- 특정 게시글 가져오기 -->
@@ -96,12 +86,12 @@
 	<!-- 게시글 등록 -->
 	<insert id="create" parameterType="hashmap">
 		INSERT INTO
-		POSTS(ID, TITLE, CONTENT, USER_ID
+		POSTS(ID, TITLE, CONTENT, USER_ID, DATES
 		<if test="userpass != null">
 			,USER_PASS
 		</if>
 		)
-		VALUES(#{id}, #{title}, #{content}, #{userid} 
+		VALUES(#{id}, #{title}, #{content}, #{userid}, #{date} 
 		<if test="userpass != null">
 			,#{userpass}
 		</if>

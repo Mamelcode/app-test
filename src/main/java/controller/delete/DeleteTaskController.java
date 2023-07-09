@@ -1,4 +1,4 @@
-package controller;
+package controller.delete;
 
 import java.io.IOException;
 

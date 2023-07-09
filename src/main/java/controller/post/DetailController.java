@@ -1,4 +1,4 @@
-package controller;
+package controller.post;
 
 import java.io.IOException;
 import java.util.List;

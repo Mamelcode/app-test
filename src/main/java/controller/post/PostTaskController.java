@@ -1,6 +1,7 @@
-package controller;
+package controller.post;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -48,6 +49,7 @@ public class PostTaskController extends HttpServlet {
 		map.put("title", title);
 		map.put("content", content);
 		map.put("userid", userId);
+		map.put("date", LocalDateTime.now());
 		//=========================================================
 		SqlSessionFactory factory = (SqlSessionFactory)
 				req.getServletContext().getAttribute("sqlSessionFactory");

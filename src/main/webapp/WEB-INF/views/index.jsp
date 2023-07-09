@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/resource/css/style.css" />
 <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>
 	<div class="home_wrap">
@@ -19,7 +20,7 @@
 					<h2>${logonUser.id} 님 환영합니다!</h2>
 				</c:when>
 				<c:otherwise>
-					<a href="/user/login" class="login_btn"><i class="fa-solid fa-user-astronaut"></i>로그인</a>
+					<a href="/user/login" class="login_btn"><i class="ri-user-line"></i>로그인</a>
 				</c:otherwise>
 			</c:choose>
 		</div>
